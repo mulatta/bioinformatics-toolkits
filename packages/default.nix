@@ -3,4 +3,5 @@
 {
   folddisco = pkgs.callPackage ./folddisco { };
   foldseek = pkgs.callPackage ./foldseek { };
+  nupack = pkgs.callPackage ./nupack { };
 }

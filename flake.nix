@@ -1,5 +1,5 @@
 {
-  description = "bioinformatics-toolkits";
+  description = "bioinformatics-toolkits — CPU-only Nix package registry for bioinformatics";
 
   inputs = {
     # keep-sorted start
@@ -16,13 +16,13 @@
       treefmt-nix,
     }:
     let
+      inherit (nixpkgs) lib;
+
       systems = [
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
       ];
-
-      lib = nixpkgs.lib;
 
       eachSystem =
         f:
@@ -30,7 +30,10 @@
           system:
           f {
             inherit system;
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
           }
         );
 
@@ -46,13 +49,25 @@
           };
         }
       );
+      packages = eachSystem ({ pkgs, ... }: import ./packages { inherit pkgs; });
+
+      devShells = eachSystem (
+        { pkgs, ... }:
+        {
+          default = import ./shell.nix { inherit pkgs; };
+        }
+      );
     in
     {
+      inherit packages devShells;
+
       checks = eachSystem (
         { system, ... }:
         {
           formatting = treefmtEval.${system}.config.build.check self;
         }
+        // lib.mapAttrs' (n: lib.nameValuePair "package-${n}") packages.${system}
+        // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") devShells.${system}
       );
 
       formatter = eachSystem ({ system, ... }: treefmtEval.${system}.config.build.wrapper);

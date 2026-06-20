@@ -29,6 +29,8 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
+  passthru.category = "Protein Structure Search & Alignment";
+
   meta = {
     description = "Universal structure alignment of monomeric and complex proteins and nucleic acids";
     homepage = "https://github.com/pylelab/USalign";

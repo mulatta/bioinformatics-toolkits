@@ -56,6 +56,8 @@ stdenv.mkDerivation (finalAttrs: {
     "-DHAVE_ARM8=1"
   ];
 
+  passthru.category = "Protein Structure Search & Alignment";
+
   meta = {
     description = "Multiple protein structure alignment at scale with FoldMason";
     homepage = "https://github.com/steineggerlab/foldmason";

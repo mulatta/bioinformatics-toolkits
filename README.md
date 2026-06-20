@@ -1,0 +1,99 @@
+# bioinformatics-toolkits
+
+Nix package registry for bioinformatics.
+
+## Usage
+
+Run a tool directly without installing:
+
+```bash
+nix run github:mulatta/bioinformatics-toolkits#foldseek -- --help
+```
+
+Or add the flake as an input and pull packages from `packages.<system>`.
+
+Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
+
+## Available Packages
+
+<!-- BEGIN GENERATED PACKAGE DOCS -->
+
+### Protein Structure Search & Alignment
+
+<details>
+<summary><strong>folddisco</strong> - Finding discontinuous motifs in protein structures</summary>
+
+- **License**: GPL-3.0-or-later
+- **Homepage**: https://github.com/steineggerlab/folddisco
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#folddisco -- --help`
+- **Nix**: [packages/folddisco/default.nix](packages/folddisco/default.nix)
+
+</details>
+<details>
+<summary><strong>foldmason</strong> - Multiple protein structure alignment at scale with FoldMason</summary>
+
+- **License**: GPL-3.0-or-later
+- **Homepage**: https://github.com/steineggerlab/foldmason
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#foldmason -- --help`
+- **Nix**: [packages/foldmason/default.nix](packages/foldmason/default.nix)
+
+</details>
+<details>
+<summary><strong>foldseek</strong> - Fast and sensitive protein structure search</summary>
+
+- **License**: GPL-3.0-or-later
+- **Homepage**: https://github.com/steineggerlab/foldseek
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#foldseek -- --help`
+- **Nix**: [packages/foldseek/default.nix](packages/foldseek/default.nix)
+
+</details>
+<details>
+<summary><strong>usalign</strong> - Universal structure alignment of monomeric and complex proteins and nucleic acids</summary>
+
+- **License**: US-align license (permissive, BSD-like)
+- **Homepage**: https://github.com/pylelab/USalign
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#usalign -- --help`
+- **Nix**: [packages/usalign/default.nix](packages/usalign/default.nix)
+
+</details>
+
+### Protein Function Annotation
+
+<details>
+<summary><strong>interproscan</strong> - Genome-scale protein function classification (InterPro member-database scanner)</summary>
+
+- **License**: Apache-2.0
+- **Homepage**: https://www.ebi.ac.uk/interpro/about/interproscan/
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#interproscan -- --help`
+- **Nix**: [packages/interproscan/default.nix](packages/interproscan/default.nix)
+
+</details>
+
+### Nucleic Acid Analysis & Design
+
+<details>
+<summary><strong>nupack</strong> - Analysis and design of nucleic acid structures, devices, and systems</summary>
+
+- **License**: unfree
+- **Homepage**: https://www.nupack.org
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#nupack`
+- **Nix**: [packages/nupack/default.nix](packages/nupack/default.nix)
+
+</details>
+
+<!-- END GENERATED PACKAGE DOCS -->
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Run `nix fmt` before committing
+4. Submit a pull request
+
+## License
+
+Individual tools are licensed under their respective licenses.
+
+The Nix packaging code in this repository is licensed under MIT.

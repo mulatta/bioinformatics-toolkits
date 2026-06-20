@@ -1,0 +1,27 @@
+name: Check README is up to date
+on:
+  pull_request:
+    paths:
+      - "packages/**"
+      - "scripts/generate-package-docs.py"
+      - "scripts/generate-package-docs.nix"
+      - "README.md"
+      - ".github/workflows/check-readme.yml"
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Setup Nix
+        uses: NixOS/nix-installer-action@main
+        with:
+          extra-conf: |
+            extra-substituters = https://nix-community.cachix.org https://cache.mulatta.io
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= cache.mulatta.io-1:DrV+Oy2azNyVKM7ihhD1QoOetRUnW+1G6RWToUpSO4U=
+      - name: Verify README matches generator output
+        run: |
+          ./scripts/generate-package-docs.py
+          git diff --exit-code README.md

@@ -73,6 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     inherit cudaSupport;
+    category = "Protein Structure Search & Alignment";
   };
 
   meta = {

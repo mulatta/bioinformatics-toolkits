@@ -69,6 +69,7 @@ python3Packages.buildPythonPackage {
   # requireFile src behind a registration wall: no public URL to track, so the
   # update-packages workflow skips it during matrix discovery.
   passthru.skipUpdate = true;
+  passthru.category = "Nucleic Acid Analysis & Design";
 
   meta = {
     description = "Analysis and design of nucleic acid structures, devices, and systems";

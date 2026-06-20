@@ -45,6 +45,15 @@
             deadnix.enable = true;
             keep-sorted.enable = true;
             nixfmt.enable = true;
+            # Markdown only; the sole JSON file (flake.lock) is Nix-managed.
+            prettier = {
+              enable = true;
+              includes = [
+                "*.md"
+                "*.markdown"
+              ];
+            };
+            ruff-format.enable = true;
             statix.enable = true;
           };
         }

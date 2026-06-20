@@ -1,5 +1,5 @@
 {
-  description = "bioinformatics-toolkits — CPU-only Nix package registry for bioinformatics";
+  description = "bioinformatics-toolkits — Nix package registry for bioinformatics";
 
   inputs = {
     # keep-sorted start

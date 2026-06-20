@@ -191,7 +191,10 @@ writeShellApplication {
     exec "$work/interproscan.sh" "$@"
   '';
 
-  passthru.unwrapped = interproscan-unwrapped;
+  passthru = {
+    inherit version;
+    unwrapped = interproscan-unwrapped;
+  };
 
   meta = {
     description = "Genome-scale protein function classification (InterPro member-database scanner)";

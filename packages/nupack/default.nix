@@ -66,6 +66,10 @@ python3Packages.buildPythonPackage {
 
   pythonImportsCheck = [ "nupack" ];
 
+  # requireFile src behind a registration wall: no public URL to track, so the
+  # update-packages workflow skips it during matrix discovery.
+  passthru.skipUpdate = true;
+
   meta = {
     description = "Analysis and design of nucleic acid structures, devices, and systems";
     homepage = "https://www.nupack.org";

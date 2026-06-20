@@ -1,0 +1,79 @@
+name: Update Packages
+on:
+  schedule:
+    - cron: "0 18 * * *" # Daily at 3 AM KST
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.list.outputs.packages }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Setup Nix
+        uses: NixOS/nix-installer-action@main
+      - name: List updatable packages
+        id: list
+        # Every versioned package is updated unless it opts out with
+        # passthru.skipUpdate (e.g. nupack, whose source is registration-walled).
+        # New packages join the matrix automatically; no edits here needed.
+        run: |
+          # shellcheck disable=SC2016  # ${n} is Nix, not shell, interpolation
+          packages=$(nix eval --json '.#packages.x86_64-linux' --apply '
+            ps: builtins.filter
+              (n: (ps.${n} ? version) && !(ps.${n}.passthru.skipUpdate or false))
+              (builtins.attrNames ps)
+          ')
+          echo "packages=$packages" >> "$GITHUB_OUTPUT"
+  update:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.discover.outputs.packages) }}
+    steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Setup Nix
+        uses: NixOS/nix-installer-action@main
+        with:
+          extra-conf: |
+            extra-substituters = https://nix-community.cachix.org https://cache.mulatta.io
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= cache.mulatta.io-1:DrV+Oy2azNyVKM7ihhD1QoOetRUnW+1G6RWToUpSO4U=
+      - name: Update ${{ matrix.package }}
+        id: update
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          # Packages with a custom update.py (sources lacking a release feed)
+          # use it; the rest fall back to nix-update.
+          script="packages/${{ matrix.package }}/update.py"
+          if [ -x "$script" ]; then
+            nix develop -c "$script"
+          else
+            nix develop -c nix-update --flake "${{ matrix.package }}"
+          fi
+          version=$(nix eval --raw ".#${{ matrix.package }}.version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          branch: update/${{ matrix.package }}
+          commit-message: "${{ matrix.package }}: update to ${{ steps.update.outputs.version }}"
+          title: "${{ matrix.package }}: update to ${{ steps.update.outputs.version }}"
+          body: "Automated update of `${{ matrix.package }}` to `${{ steps.update.outputs.version }}`."
+          labels: auto-merge

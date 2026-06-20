@@ -1,0 +1,41 @@
+name: Update README
+on:
+  schedule:
+    - cron: "0 17 * * *" # Daily at 2 AM KST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "packages/**"
+      - "scripts/generate-package-docs.nix"
+      - "scripts/generate-package-docs.py"
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Setup Nix
+        uses: NixOS/nix-installer-action@main
+      - name: Regenerate README
+        run: ./scripts/generate-package-docs.py
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          branch: update/readme
+          commit-message: "docs: regenerate README package list"
+          title: "docs: regenerate README package list"
+          body: "Automated README regeneration from package metadata."
+          labels: auto-merge

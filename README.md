@@ -84,6 +84,15 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 ### Phylogenetics & Evolutionary Analysis
 
 <details>
+<summary><strong>consurf</strong> - Standalone ConSurf: evolutionary conservation of amino-acid/nucleotide positions, web-server equivalent</summary>
+
+- **License**: ConSurf academic use (no upstream license file)
+- **Homepage**: https://consurf.tau.ac.il
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#consurf -- --help`
+- **Nix**: [packages/consurf/default.nix](packages/consurf/default.nix)
+
+</details>
+<details>
 <summary><strong>rate4site</strong> - Detect conserved amino-acid sites by computing the relative evolutionary rate for each site</summary>
 
 - **License**: GPL-2.0-or-later

@@ -1,5 +1,7 @@
 { pkgs }:
-{
+# rec: consurf bundles our own rate4site (not in nixpkgs) on its PATH.
+rec {
+  consurf = pkgs.callPackage ./consurf { inherit rate4site; };
   folddisco = pkgs.callPackage ./folddisco { };
   foldmason = pkgs.callPackage ./foldmason { };
   foldseek = pkgs.callPackage ./foldseek { };

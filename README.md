@@ -81,6 +81,18 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 
+### Phylogenetics & Evolutionary Analysis
+
+<details>
+<summary><strong>rate4site</strong> - Detect conserved amino-acid sites by computing the relative evolutionary rate for each site</summary>
+
+- **License**: GPL-2.0-or-later
+- **Homepage**: https://www.tau.ac.il/~itaymay/cp/rate4site.html
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#rate4site -- --help`
+- **Nix**: [packages/rate4site/default.nix](packages/rate4site/default.nix)
+
+</details>
+
 <!-- END GENERATED PACKAGE DOCS -->
 
 ## Contributing

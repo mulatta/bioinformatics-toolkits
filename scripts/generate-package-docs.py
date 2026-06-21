@@ -83,6 +83,7 @@ CATEGORY_ORDER = [
     "Protein Function Annotation",
     "Nucleic Acid Analysis & Design",
     "Phylogenetics & Evolutionary Analysis",
+    "Sequence & Structure Analysis",
     "Uncategorized",
 ]
 

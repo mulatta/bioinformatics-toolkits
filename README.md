@@ -102,6 +102,18 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 
+### Sequence & Structure Analysis
+
+<details>
+<summary><strong>biotite</strong> - Comprehensive library for computational molecular biology</summary>
+
+- **License**: BSD-3-Clause
+- **Homepage**: https://www.biotite-python.org
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#biotite`
+- **Nix**: [packages/biotite/default.nix](packages/biotite/default.nix)
+
+</details>
+
 <!-- END GENERATED PACKAGE DOCS -->
 
 ## Contributing

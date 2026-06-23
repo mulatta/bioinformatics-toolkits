@@ -8,6 +8,7 @@ rec {
   foldseek = pkgs.callPackage ./foldseek { };
   gemme = pkgs.callPackage ./gemme { };
   nupack = pkgs.callPackage ./nupack { };
+  plmc = pkgs.callPackage ./plmc { };
   rate4site = pkgs.callPackage ./rate4site { };
   thermompnn = pkgs.callPackage ./thermompnn { };
   usalign = pkgs.callPackage ./usalign { };

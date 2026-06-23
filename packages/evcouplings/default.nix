@@ -46,7 +46,7 @@ in
 py.buildPythonPackage {
   pname = "evcouplings";
   # No 0.3.0 release tag yet; track the develop HEAD (PyPI is still on 0.2.1).
-  version = "0.3.0-unstable-2026-04-20";
+  version = "0.2.1";
   pyproject = true;
 
   src = fetchFromGitHub {

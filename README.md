@@ -48,6 +48,15 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 <details>
+<summary><strong>maxcluster</strong> - Protein structure comparison and clustering</summary>
+
+- **License**: unfree
+- **Homepage**: https://www.sbg.bio.ic.ac.uk/~maxcluster/
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#maxcluster -- --help`
+- **Nix**: [packages/maxcluster/default.nix](packages/maxcluster/default.nix)
+
+</details>
+<details>
 <summary><strong>usalign</strong> - Universal structure alignment of monomeric and complex proteins and nucleic acids</summary>
 
 - **License**: US-align license (permissive, BSD-like)
@@ -113,9 +122,36 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 - **Nix**: [packages/biotite/default.nix](packages/biotite/default.nix)
 
 </details>
+<details>
+<summary><strong>cns</strong> - Crystallography & NMR System — macromolecular structure determination (EVcouplings fold engine)</summary>
+
+- **License**: unfree
+- **Homepage**: http://cns-online.org/
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#cns -- --help`
+- **Nix**: [packages/cns/default.nix](packages/cns/default.nix)
+
+</details>
+<details>
+<summary><strong>psipred</strong> - PSIPRED V4 protein secondary structure prediction</summary>
+
+- **License**: unfree
+- **Homepage**: https://github.com/psipred/psipred
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#psipred`
+- **Nix**: [packages/psipred/default.nix](packages/psipred/default.nix)
+
+</details>
 
 ### Coevolution & Variant Effect
 
+<details>
+<summary><strong>evcouplings</strong> - Predict residue couplings, 3D structure and mutation effects from sequence coevolution</summary>
+
+- **License**: MIT
+- **Homepage**: https://github.com/debbiemarkslab/EVcouplings
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#evcouplings -- --help`
+- **Nix**: [packages/evcouplings/default.nix](packages/evcouplings/default.nix)
+
+</details>
 <details>
 <summary><strong>gemme</strong> - Predict mutational effects from evolutionary conservation and global epistasis</summary>
 
@@ -123,6 +159,15 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 - **Homepage**: http://www.lcqb.upmc.fr/GEMME/
 - **Usage**: `nix run github:mulatta/bioinformatics-toolkits#gemme -- --help`
 - **Nix**: [packages/gemme/default.nix](packages/gemme/default.nix)
+
+</details>
+<details>
+<summary><strong>plmc</strong> - Infer Potts models (couplings) from a multiple sequence alignment by pseudo-likelihood maximization</summary>
+
+- **License**: MIT
+- **Homepage**: https://github.com/debbiemarkslab/plmc
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#plmc -- --help`
+- **Nix**: [packages/plmc/default.nix](packages/plmc/default.nix)
 
 </details>
 

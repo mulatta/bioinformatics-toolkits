@@ -132,6 +132,15 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 <details>
+<summary><strong>fair-esm</strong> - Evolutionary Scale Modeling (ESM): pretrained protein language models</summary>
+
+- **License**: MIT
+- **Homepage**: https://github.com/facebookresearch/esm
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#fair-esm`
+- **Nix**: [packages/fair-esm/default.nix](packages/fair-esm/default.nix)
+
+</details>
+<details>
 <summary><strong>psipred</strong> - PSIPRED V4 protein secondary structure prediction</summary>
 
 - **License**: unfree

@@ -70,6 +70,8 @@
     {
       inherit packages devShells;
 
+      overlays.default = import ./overlays.nix;
+
       checks = eachSystem (
         { system, ... }:
         {

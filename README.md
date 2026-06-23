@@ -126,6 +126,18 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 
+### Protein Stability Prediction
+
+<details>
+<summary><strong>thermompnn</strong> - Predict ddG stability changes of protein point mutants with a ProteinMPNN-based GNN</summary>
+
+- **License**: MIT
+- **Homepage**: https://github.com/Kuhlman-Lab/ThermoMPNN
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#thermompnn -- --help`
+- **Nix**: [packages/thermompnn/default.nix](packages/thermompnn/default.nix)
+
+</details>
+
 <!-- END GENERATED PACKAGE DOCS -->
 
 ## Contributing

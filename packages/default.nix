@@ -3,6 +3,7 @@
 rec {
   biotite = pkgs.callPackage ./biotite { };
   consurf = pkgs.callPackage ./consurf { inherit rate4site; };
+  evcouplings = pkgs.callPackage ./evcouplings { inherit plmc; };
   folddisco = pkgs.callPackage ./folddisco { };
   foldmason = pkgs.callPackage ./foldmason { };
   foldseek = pkgs.callPackage ./foldseek { };

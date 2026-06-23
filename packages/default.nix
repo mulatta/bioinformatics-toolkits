@@ -6,6 +6,7 @@ rec {
   folddisco = pkgs.callPackage ./folddisco { };
   foldmason = pkgs.callPackage ./foldmason { };
   foldseek = pkgs.callPackage ./foldseek { };
+  gemme = pkgs.callPackage ./gemme { };
   nupack = pkgs.callPackage ./nupack { };
   rate4site = pkgs.callPackage ./rate4site { };
   usalign = pkgs.callPackage ./usalign { };

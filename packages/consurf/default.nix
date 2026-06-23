@@ -39,13 +39,13 @@ stdenv.mkDerivation {
   pname = "consurf";
   # Standalone ConSurf is "v1.00" (Yariv et al. 2023) but the repo carries no
   # tags; update.py tracks its default-branch HEAD by commit date.
-  version = "1.00-unstable-2026-06-15";
+  version = "1.00-unstable-2026-06-23";
 
   src = fetchFromGitHub {
     owner = "Barak19";
     repo = "stand_alone_consurf";
-    rev = "8b7ef3fcf0965645672abdabb694edead60f9fe9";
-    hash = "sha256-R1U1BpTUZC9P6mJtGzTUDijdl/wJ8xMwlYUIwVtP1Iw=";
+    rev = "f4a3bc126f154e5afb2c9ace16dee80e566014ad";
+    hash = "sha256-6FPjakfHif+c3G7YsqHD1xnEBAQQaPplJOIb21769u4=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

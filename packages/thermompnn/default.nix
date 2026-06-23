@@ -56,7 +56,7 @@ in
 stdenv.mkDerivation (_finalAttrs: {
   pname = "thermompnn";
   # No upstream tags/releases; track the main-branch HEAD by commit date.
-  version = "1.0-unstable-2026-03-26";
+  version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "Kuhlman-Lab";

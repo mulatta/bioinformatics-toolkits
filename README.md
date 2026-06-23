@@ -10,9 +10,53 @@ Run a tool directly without installing:
 nix run github:mulatta/bioinformatics-toolkits#foldseek -- --help
 ```
 
-Or add the flake as an input and pull packages from `packages.<system>`.
-
 Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
+
+### As a flake input
+
+Pull individual packages from `packages.<system>` — these are built against this
+repo's pinned `nixpkgs`, so results are reproducible:
+
+```nix
+{
+  inputs.bio.url = "github:mulatta/bioinformatics-toolkits";
+
+  outputs = { nixpkgs, bio, ... }: {
+    # e.g. inside a devShell or package
+    # bio.packages.x86_64-linux.evcouplings
+  };
+}
+```
+
+### Via the overlay
+
+Use `overlays.default` to expose every package on your own `nixpkgs` instance,
+alongside the rest of nixpkgs. The overlay is purely additive (no package name
+collides with nixpkgs, so nothing is overridden):
+
+```nix
+{
+  inputs.bio.url = "github:mulatta/bioinformatics-toolkits";
+
+  outputs = { nixpkgs, bio, ... }:
+    let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ bio.overlays.default ];
+        config.allowUnfree = true; # required by cns, maxcluster, psipred, …
+      };
+    in
+    {
+      # pkgs.evcouplings, pkgs.plmc, pkgs.fair-esm, …
+    };
+}
+```
+
+Overlay packages build against _your_ `nixpkgs`, not this repo's pin. That is
+usually fine, but if your `nixpkgs` is far from ours a dependency may not line up
+— pull from `packages.<system>` instead when you need the pinned build. Some
+packages are `x86_64-linux`-only (`cns`, `interproscan`, `maxcluster`) and simply
+do not appear in the overlay on other systems.
 
 ## Available Packages
 

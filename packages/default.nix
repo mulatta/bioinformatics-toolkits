@@ -9,6 +9,7 @@ rec {
   gemme = pkgs.callPackage ./gemme { };
   nupack = pkgs.callPackage ./nupack { };
   rate4site = pkgs.callPackage ./rate4site { };
+  thermompnn = pkgs.callPackage ./thermompnn { };
   usalign = pkgs.callPackage ./usalign { };
 }
 // pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {

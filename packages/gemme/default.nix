@@ -138,7 +138,8 @@ stdenv.mkDerivation {
     description = "Predict mutational effects from evolutionary conservation and global epistasis";
     homepage = "http://www.lcqb.upmc.fr/GEMME/";
     license = lib.licenses.mit;
-    platforms = lib.platforms.linux;
+    # Bundled muscle3 (./muscle3.nix) ships an x86_64-linux-only binary.
+    platforms = [ "x86_64-linux" ];
     mainProgram = "gemme";
   };
 }

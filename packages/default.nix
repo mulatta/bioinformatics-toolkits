@@ -10,6 +10,7 @@ rec {
   gemme = pkgs.callPackage ./gemme { };
   nupack = pkgs.callPackage ./nupack { };
   plmc = pkgs.callPackage ./plmc { };
+  psipred = pkgs.callPackage ./psipred { };
   rate4site = pkgs.callPackage ./rate4site { };
   thermompnn = pkgs.callPackage ./thermompnn { };
   usalign = pkgs.callPackage ./usalign { };

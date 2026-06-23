@@ -2,6 +2,13 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  llvmPackages,
+  # Parallelise the pseudo-likelihood gradient with OpenMP (upstream's
+  # `all-openmp` target). On by default to match nixpkgs' multithreaded-by-
+  # default convention; the build stays bit-reproducible. Parallel float
+  # reductions are not bitwise-deterministic at runtime, so disable this (or set
+  # OMP_NUM_THREADS=1) when you need reproducible numerics.
+  openmpSupport ? true,
 }:
 # plmc infers undirected graphical models (Potts models) from a multiple sequence
 # alignment via pseudo-likelihood maximization — the coupling-inference engine
@@ -19,13 +26,17 @@ stdenv.mkDerivation (_finalAttrs: {
     hash = "sha256-3P69lrNWTlv4fZekHajt7zeqcphXZDc0IyRC264bjaE=";
   };
 
+  # gcc's -fopenmp pulls in its own libgomp; clang needs the standalone libomp.
+  buildInputs = lib.optional (openmpSupport && stdenv.cc.isClang) llvmPackages.openmp;
+
   # The bundled makefile hardcodes `-msse4.2` (x86-only) in every target. The
   # sources use no x86 intrinsics, so it is purely a codegen flag — compile
   # directly and add it only on x86_64, keeping aarch64 builds working.
   buildPhase = ''
     runHook preBuild
     $CC src/lib/twister.c src/lib/lbfgs.c src/plm.c src/inference.c src/weights.c src/main.c \
-      -o plmc -std=c99 -O3 ${lib.optionalString stdenv.hostPlatform.isx86_64 "-msse4.2"} -lm
+      -o plmc -std=c99 -O3 ${lib.optionalString stdenv.hostPlatform.isx86_64 "-msse4.2"} \
+      ${lib.optionalString openmpSupport "-fopenmp"} -lm
     runHook postBuild
   '';
 

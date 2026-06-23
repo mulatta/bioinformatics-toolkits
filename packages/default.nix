@@ -17,4 +17,5 @@ rec {
 }
 // pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
   interproscan = pkgs.callPackage ./interproscan { };
+  maxcluster = pkgs.callPackage ./maxcluster { };
 }

@@ -114,6 +114,18 @@ Supported systems: `x86_64-linux`, `aarch64-linux`, `aarch64-darwin`.
 
 </details>
 
+### Coevolution & Variant Effect
+
+<details>
+<summary><strong>gemme</strong> - Predict mutational effects from evolutionary conservation and global epistasis</summary>
+
+- **License**: MIT
+- **Homepage**: http://www.lcqb.upmc.fr/GEMME/
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#gemme -- --help`
+- **Nix**: [packages/gemme/default.nix](packages/gemme/default.nix)
+
+</details>
+
 <!-- END GENERATED PACKAGE DOCS -->
 
 ## Contributing

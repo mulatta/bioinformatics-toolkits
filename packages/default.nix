@@ -16,6 +16,7 @@ rec {
   usalign = pkgs.callPackage ./usalign { };
 }
 // pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
+  cns = pkgs.callPackage ./cns { };
   interproscan = pkgs.callPackage ./interproscan { };
   maxcluster = pkgs.callPackage ./maxcluster { };
 }

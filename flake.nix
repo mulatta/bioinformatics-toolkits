@@ -75,7 +75,12 @@
         {
           formatting = treefmtEval.${system}.config.build.check self;
         }
-        // lib.mapAttrs' (n: lib.nameValuePair "package-${n}") packages.${system}
+        // lib.mapAttrs' (n: lib.nameValuePair "package-${n}") (
+          # requireFile packages are registration-gated and cannot build without
+          # the file in the store, so keep them in `packages` but skip the build
+          # check (they mark themselves with passthru.requireFile = true).
+          lib.filterAttrs (_: p: !(p.requireFile or false)) packages.${system}
+        )
         // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") devShells.${system}
       );
 

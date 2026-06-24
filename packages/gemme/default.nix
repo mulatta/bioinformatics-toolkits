@@ -85,6 +85,14 @@ stdenv.mkDerivation {
     substituteInPlace GEMME/gemmeAnal.py \
       --replace-fail 'cp $GEMME_PATH/default.conf .' \
                      'cp $GEMME_PATH/default.conf . && chmod u+w default.conf'
+
+    # cleanTheMess() unconditionally `os.remove(prot+".pdb")`, but the
+    # full-matrix path never writes that dummy PDB, so cleanup dies with
+    # FileNotFoundError. Every other removal in the function is already guarded
+    # with os.path.isfile; guard this one the same way.
+    substituteInPlace GEMME/gemmeAnal.py \
+      --replace-fail 'os.remove(prot+".pdb")' \
+                     'os.path.isfile(prot+".pdb") and os.remove(prot+".pdb")'
   '';
 
   buildPhase = ''

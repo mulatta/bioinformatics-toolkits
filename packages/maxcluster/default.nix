@@ -34,6 +34,9 @@ stdenvNoCC.mkDerivation {
     runHook postInstallCheck
   '';
 
+  # Upstream ships a single statically-hosted binary with no release feed, so
+  # nix-update cannot determine a version — the update-packages workflow skips it.
+  passthru.skipUpdate = true;
   passthru.category = "Protein Structure Search & Alignment";
 
   meta = {

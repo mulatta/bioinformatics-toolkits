@@ -138,6 +138,9 @@ stdenv.mkDerivation (_finalAttrs: {
     runHook postInstallCheck
   '';
 
+  # requireFile src behind a registration wall: no public URL to track, so the
+  # update-packages workflow skips it during matrix discovery.
+  passthru.skipUpdate = true;
   # requireFile: keep in `packages` but excluded from `nix flake check` builds.
   passthru.requireFile = true;
   passthru.category = "Sequence & Structure Analysis";

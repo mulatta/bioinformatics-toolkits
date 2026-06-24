@@ -76,6 +76,15 @@ stdenv.mkDerivation {
       sed -i -E 's/^([[:space:]]*)print (.+)$/\1print(\2)/' "$f"
       expand -i -t 8 "$f" > "$f.tmp" && mv "$f.tmp" "$f"
     done
+
+    # JET2's full-matrix path copies default.conf into the run dir and then
+    # rewrites it (editConfJET's `sed -i`, and JET's own FileWriter). `cp`
+    # carries over the source mode, and our conf lives read-only in the Nix
+    # store (0444), so the copy is read-only too and those writes fail with
+    # Permission denied. Make the working copy writable right after it lands.
+    substituteInPlace GEMME/gemmeAnal.py \
+      --replace-fail 'cp $GEMME_PATH/default.conf .' \
+                     'cp $GEMME_PATH/default.conf . && chmod u+w default.conf'
   '';
 
   buildPhase = ''

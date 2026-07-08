@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate markdown documentation for all packages and update README.md.
 
-Package metadata is the single source of truth: this script loads package
+Package metadata is the single source of truth: this script loads evaluated
 metadata, renders a collapsible <details> block per package, and rewrites the
 region between the marker comments in README.md.
 """
@@ -26,7 +26,7 @@ def get_all_packages_metadata(metadata_json: Path | None = None) -> dict[str, Me
     if metadata_json is not None:
         data = json.loads(metadata_json.read_text())
     else:
-        nix_file = Path(__file__).parent / "generate-package-docs.nix"
+        nix_file = Path(__file__).parent / "package-docs-metadata-from-flake.nix"
 
         try:
             result = subprocess.run(

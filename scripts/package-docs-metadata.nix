@@ -1,4 +1,4 @@
-# Extract documentation metadata from flake packages.
+# Pure metadata extraction shared by local docs generation and CI checks.
 { packages }:
 let
   packageNames = builtins.attrNames packages;

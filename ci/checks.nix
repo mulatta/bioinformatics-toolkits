@@ -10,6 +10,8 @@
 eachSystem (
   { system, pkgs, ... }:
   let
+    # Keep flake input resolution in Nix evaluation, not in the sandboxed
+    # builder. The builder reads this JSON instead of running nested Nix.
     packageDocsMetadata = pkgs.writeText "package-docs-metadata.json" (
       builtins.toJSON (import ../scripts/package-docs-metadata.nix { packages = packages.${system}; })
     );

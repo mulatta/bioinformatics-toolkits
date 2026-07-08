@@ -70,6 +70,8 @@
     {
       inherit packages devShells;
 
+      herculesCI = import ./ci/effects.nix { inherit nixpkgs; };
+
       overlays.default = import ./overlays.nix;
 
       checks = eachSystem (

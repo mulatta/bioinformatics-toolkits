@@ -36,7 +36,7 @@ stdenv.mkDerivation {
   # canonical conservation scores. `rate4site_doublerep` is the plain build.
 
   passthru = {
-    category = "Phylogenetics & Evolutionary Analysis";
+    category = "Evolution & Variation";
     # Frozen upstream: 3.0.0 is the last release and the orig tarball is an
     # immutable snapshot, so there is nothing for the auto-updater to track.
     skipUpdate = true;

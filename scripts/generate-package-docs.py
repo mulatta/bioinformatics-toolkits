@@ -79,11 +79,10 @@ def generate_package_doc(package: str, metadata: Metadata) -> str:
 
 # Display order for category sections; any other category falls to the end.
 CATEGORY_ORDER = [
-    "Protein Structure Search & Alignment",
-    "Protein Function Annotation",
-    "Nucleic Acid Analysis & Design",
-    "Phylogenetics & Evolutionary Analysis",
-    "Sequence & Structure Analysis",
+    "Structure Analysis",
+    "Sequence Analysis & Design",
+    "Evolution & Variation",
+    "Libraries",
     "Uncategorized",
 ]
 

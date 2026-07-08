@@ -145,7 +145,7 @@ stdenv.mkDerivation {
   '';
 
   passthru = {
-    category = "Coevolution & Variant Effect";
+    category = "Evolution & Variation";
     # Upstream distributes an undated tarball with no version tags; nothing for
     # the auto-updater to track.
     skipUpdate = true;

@@ -76,7 +76,7 @@ stdenv.mkDerivation (_finalAttrs: {
     runHook postInstallCheck
   '';
 
-  passthru.category = "Sequence & Structure Analysis";
+  passthru.category = "Sequence Analysis & Design";
 
   meta = {
     description = "PSIPRED V4 protein secondary structure prediction";

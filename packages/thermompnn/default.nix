@@ -114,7 +114,7 @@ stdenv.mkDerivation (_finalAttrs: {
   '';
 
   passthru = {
-    category = "Protein Stability Prediction";
+    category = "Evolution & Variation";
     # Tracks a moving branch; bump with packages/thermompnn/update.py.
   };
 

@@ -31,7 +31,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   # `folddisco --version` reports the release instead of "unknown".
   env.FOLDDISCO_BUILD_VERSION = finalAttrs.version;
 
-  passthru.category = "Protein Structure Search & Alignment";
+  passthru.category = "Structure Analysis";
 
   meta = {
     description = "Finding discontinuous motifs in protein structures";

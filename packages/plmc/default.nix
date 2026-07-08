@@ -57,7 +57,7 @@ stdenv.mkDerivation (_finalAttrs: {
     runHook postInstallCheck
   '';
 
-  passthru.category = "Coevolution & Variant Effect";
+  passthru.category = "Evolution & Variation";
 
   meta = {
     description = "Infer Potts models (couplings) from a multiple sequence alignment by pseudo-likelihood maximization";

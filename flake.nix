@@ -74,23 +74,16 @@
 
       overlays.default = import ./overlays.nix;
 
-      checks = eachSystem (
-        { system, ... }:
-        {
-          formatting = treefmtEval.${system}.config.build.check self;
-        }
-        // lib.mapAttrs' (n: lib.nameValuePair "package-${n}") (
-          lib.filterAttrs (
-            _: p:
-            # Skip packages not buildable on this system: requireFile ones are
-            # registration-gated (marked passthru.requireFile = true), and others
-            # are simply unsupported on the host (meta.platforms) — checking
-            # either just produces a guaranteed failure.
-            (lib.meta.availableOn { inherit system; } p) && !(p.requireFile or false)
-          ) packages.${system}
-        )
-        // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") devShells.${system}
-      );
+      checks = import ./ci/checks.nix {
+        inherit
+          self
+          lib
+          eachSystem
+          packages
+          devShells
+          treefmtEval
+          ;
+      };
 
       formatter = eachSystem ({ system, ... }: treefmtEval.${system}.config.build.wrapper);
     };

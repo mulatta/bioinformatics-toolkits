@@ -14,6 +14,7 @@ rec {
   psipred = pkgs.callPackage ./psipred { };
   rate4site = pkgs.callPackage ./rate4site { };
   thermompnn = pkgs.callPackage ./thermompnn { };
+  updater = pkgs.callPackage ./updater { };
   usalign = pkgs.callPackage ./usalign { };
 }
 // pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {

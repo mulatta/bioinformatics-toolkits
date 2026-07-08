@@ -76,7 +76,7 @@ let
     branch=update/readme
     git switch -C "$branch" origin/main
 
-    ./scripts/generate-package-docs.py
+    python3 scripts/generate-package-docs.py
 
     if [ -z "$(git status --porcelain)" ]; then
       echo "README package docs already up to date"

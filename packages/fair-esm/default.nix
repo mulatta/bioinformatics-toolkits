@@ -59,7 +59,7 @@ py.buildPythonPackage (_finalAttrs: {
 
   # Archived upstream: nothing to update to.
   passthru.skipUpdate = true;
-  passthru.category = "Sequence & Structure Analysis";
+  passthru.category = "Libraries";
 
   meta = {
     description = "Evolutionary Scale Modeling (ESM): pretrained protein language models";

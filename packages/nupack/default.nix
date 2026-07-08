@@ -71,7 +71,7 @@ python3Packages.buildPythonPackage {
   passthru.skipUpdate = true;
   # requireFile: keep in `packages` but excluded from `nix flake check` builds.
   passthru.requireFile = true;
-  passthru.category = "Nucleic Acid Analysis & Design";
+  passthru.category = "Sequence Analysis & Design";
 
   meta = {
     description = "Analysis and design of nucleic acid structures, devices, and systems";

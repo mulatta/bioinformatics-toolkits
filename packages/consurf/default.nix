@@ -86,7 +86,7 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  passthru.category = "Phylogenetics & Evolutionary Analysis";
+  passthru.category = "Evolution & Variation";
 
   meta = {
     description = "Standalone ConSurf: evolutionary conservation of amino-acid/nucleotide positions, web-server equivalent";

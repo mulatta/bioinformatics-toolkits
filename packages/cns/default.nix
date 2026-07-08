@@ -143,7 +143,7 @@ stdenv.mkDerivation (_finalAttrs: {
   passthru.skipUpdate = true;
   # requireFile: keep in `packages` but excluded from `nix flake check` builds.
   passthru.requireFile = true;
-  passthru.category = "Sequence & Structure Analysis";
+  passthru.category = "Structure Analysis";
 
   meta = {
     description = "Crystallography & NMR System — macromolecular structure determination (EVcouplings fold engine)";

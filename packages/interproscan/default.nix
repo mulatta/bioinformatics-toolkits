@@ -194,7 +194,7 @@ writeShellApplication {
   passthru = {
     inherit version;
     unwrapped = interproscan-unwrapped;
-    category = "Protein Function Annotation";
+    category = "Sequence Analysis & Design";
   };
 
   meta = {

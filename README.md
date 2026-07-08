@@ -62,8 +62,17 @@ do not appear in the overlay on other systems.
 
 <!-- BEGIN GENERATED PACKAGE DOCS -->
 
-### Protein Structure Search & Alignment
+### Structure Analysis
 
+<details>
+<summary><strong>cns</strong> - Crystallography & NMR System — macromolecular structure determination (EVcouplings fold engine)</summary>
+
+- **License**: unfree
+- **Homepage**: http://cns-online.org/
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#cns -- --help`
+- **Nix**: [packages/cns/default.nix](packages/cns/default.nix)
+
+</details>
 <details>
 <summary><strong>folddisco</strong> - Finding discontinuous motifs in protein structures</summary>
 
@@ -110,7 +119,7 @@ do not appear in the overlay on other systems.
 
 </details>
 
-### Protein Function Annotation
+### Sequence Analysis & Design
 
 <details>
 <summary><strong>interproscan</strong> - Genome-scale protein function classification (InterPro member-database scanner)</summary>
@@ -121,9 +130,6 @@ do not appear in the overlay on other systems.
 - **Nix**: [packages/interproscan/default.nix](packages/interproscan/default.nix)
 
 </details>
-
-### Nucleic Acid Analysis & Design
-
 <details>
 <summary><strong>nupack</strong> - Analysis and design of nucleic acid structures, devices, and systems</summary>
 
@@ -131,57 +137,6 @@ do not appear in the overlay on other systems.
 - **Homepage**: https://www.nupack.org
 - **Usage**: `nix build github:mulatta/bioinformatics-toolkits#nupack`
 - **Nix**: [packages/nupack/default.nix](packages/nupack/default.nix)
-
-</details>
-
-### Phylogenetics & Evolutionary Analysis
-
-<details>
-<summary><strong>consurf</strong> - Standalone ConSurf: evolutionary conservation of amino-acid/nucleotide positions, web-server equivalent</summary>
-
-- **License**: ConSurf academic use (no upstream license file)
-- **Homepage**: https://consurf.tau.ac.il
-- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#consurf -- --help`
-- **Nix**: [packages/consurf/default.nix](packages/consurf/default.nix)
-
-</details>
-<details>
-<summary><strong>rate4site</strong> - Detect conserved amino-acid sites by computing the relative evolutionary rate for each site</summary>
-
-- **License**: GPL-2.0-or-later
-- **Homepage**: https://www.tau.ac.il/~itaymay/cp/rate4site.html
-- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#rate4site -- --help`
-- **Nix**: [packages/rate4site/default.nix](packages/rate4site/default.nix)
-
-</details>
-
-### Sequence & Structure Analysis
-
-<details>
-<summary><strong>biotite</strong> - Comprehensive library for computational molecular biology</summary>
-
-- **License**: BSD-3-Clause
-- **Homepage**: https://www.biotite-python.org
-- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#biotite`
-- **Nix**: [packages/biotite/default.nix](packages/biotite/default.nix)
-
-</details>
-<details>
-<summary><strong>cns</strong> - Crystallography & NMR System — macromolecular structure determination (EVcouplings fold engine)</summary>
-
-- **License**: unfree
-- **Homepage**: http://cns-online.org/
-- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#cns -- --help`
-- **Nix**: [packages/cns/default.nix](packages/cns/default.nix)
-
-</details>
-<details>
-<summary><strong>fair-esm</strong> - Evolutionary Scale Modeling (ESM): pretrained protein language models</summary>
-
-- **License**: MIT
-- **Homepage**: https://github.com/facebookresearch/esm
-- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#fair-esm`
-- **Nix**: [packages/fair-esm/default.nix](packages/fair-esm/default.nix)
 
 </details>
 <details>
@@ -194,8 +149,17 @@ do not appear in the overlay on other systems.
 
 </details>
 
-### Coevolution & Variant Effect
+### Evolution & Variation
 
+<details>
+<summary><strong>consurf</strong> - Standalone ConSurf: evolutionary conservation of amino-acid/nucleotide positions, web-server equivalent</summary>
+
+- **License**: ConSurf academic use (no upstream license file)
+- **Homepage**: https://consurf.tau.ac.il
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#consurf -- --help`
+- **Nix**: [packages/consurf/default.nix](packages/consurf/default.nix)
+
+</details>
 <details>
 <summary><strong>evcouplings</strong> - Predict residue couplings, 3D structure and mutation effects from sequence coevolution</summary>
 
@@ -223,9 +187,15 @@ do not appear in the overlay on other systems.
 - **Nix**: [packages/plmc/default.nix](packages/plmc/default.nix)
 
 </details>
+<details>
+<summary><strong>rate4site</strong> - Detect conserved amino-acid sites by computing the relative evolutionary rate for each site</summary>
 
-### Protein Stability Prediction
+- **License**: GPL-2.0-or-later
+- **Homepage**: https://www.tau.ac.il/~itaymay/cp/rate4site.html
+- **Usage**: `nix run github:mulatta/bioinformatics-toolkits#rate4site -- --help`
+- **Nix**: [packages/rate4site/default.nix](packages/rate4site/default.nix)
 
+</details>
 <details>
 <summary><strong>thermompnn</strong> - Predict ddG stability changes of protein point mutants with a ProteinMPNN-based GNN</summary>
 
@@ -233,6 +203,27 @@ do not appear in the overlay on other systems.
 - **Homepage**: https://github.com/Kuhlman-Lab/ThermoMPNN
 - **Usage**: `nix run github:mulatta/bioinformatics-toolkits#thermompnn -- --help`
 - **Nix**: [packages/thermompnn/default.nix](packages/thermompnn/default.nix)
+
+</details>
+
+### Libraries
+
+<details>
+<summary><strong>biotite</strong> - Comprehensive library for computational molecular biology</summary>
+
+- **License**: BSD-3-Clause
+- **Homepage**: https://www.biotite-python.org
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#biotite`
+- **Nix**: [packages/biotite/default.nix](packages/biotite/default.nix)
+
+</details>
+<details>
+<summary><strong>fair-esm</strong> - Evolutionary Scale Modeling (ESM): pretrained protein language models</summary>
+
+- **License**: MIT
+- **Homepage**: https://github.com/facebookresearch/esm
+- **Usage**: `nix build github:mulatta/bioinformatics-toolkits#fair-esm`
+- **Nix**: [packages/fair-esm/default.nix](packages/fair-esm/default.nix)
 
 </details>
 

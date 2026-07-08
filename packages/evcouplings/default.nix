@@ -97,7 +97,7 @@ py.buildPythonPackage {
     "evcouplings.utils.config"
   ];
 
-  passthru.category = "Coevolution & Variant Effect";
+  passthru.category = "Evolution & Variation";
 
   meta = {
     description = "Predict residue couplings, 3D structure and mutation effects from sequence coevolution";

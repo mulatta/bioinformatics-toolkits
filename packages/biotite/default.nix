@@ -113,7 +113,7 @@ python3Packages.buildPythonPackage (finalAttrs: {
     "biotite.structure"
   ];
 
-  passthru.category = "Sequence & Structure Analysis";
+  passthru.category = "Libraries";
 
   meta = {
     description = "Comprehensive library for computational molecular biology";
